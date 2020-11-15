@@ -14,7 +14,11 @@ export class NewAccountComponent {
 
   //it means constructor(private loggingService:LoggingService, private accountsService:AccountsService){}
   //two instances of services, google hierarchycal injektor
-  constructor(private loggingService:LoggingService, private accountsService:AccountsService){}
+  constructor(private loggingService:LoggingService, private accountsService:AccountsService){
+    this.accountsService.statusUpdated.subscribe(
+      (status:string)=> alert("new status: "+status)
+    );
+  }
 
   onCreateAccount(accountName: string, accountStatus: string) {
 
